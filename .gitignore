@@ -1,0 +1,10 @@
+.env
+__pycache__/
+data/
+*.sqlite3*
+
+*.pyc
+.pytest_cache/
+*.zip
+*.bak
+.env.*.local

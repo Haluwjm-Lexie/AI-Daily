@@ -1,0 +1,72 @@
+name: AI Daily — 自动同步与发布
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'site/data/**'
+      - '*.md'
+  schedule:
+    # Beijing 08:30 (00:30 UTC), runs can be delayed by GitHub.
+    - cron: '30 0 * * *'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: ai-daily-deploy
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check source files (never publish local tokens)
+        run: |
+          test ! -e .env
+          test ! -e data/daily.sqlite3
+          python -m compileall -q server.py export_pages.py
+      - name: Refresh public data, export site and notify Feishu
+        env:
+          FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          PUBLIC_URL: https://haluwjm-lexie.github.io/AI-Daily/
+          GITHUB_MIN_STARS: '500'
+        run: python export_pages.py --refresh --notify
+      - name: Commit public archive so history survives future runs
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A site/data
+          if ! git diff --cached --quiet; then
+            git commit -m 'chore: publish latest curated archive'
+            git push
+          fi
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload Pages site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: Deploy Pages
+        id: deploy
+        uses: actions/deploy-pages@v4
