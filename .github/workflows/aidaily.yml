@@ -46,7 +46,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -A site/data
+          git add -f -A site/data
           if ! git diff --cached --quiet; then
             git commit -m 'chore: publish latest curated archive'
             git push
