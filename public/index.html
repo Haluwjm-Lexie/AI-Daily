@@ -11,26 +11,35 @@
 <section id="page-favorites" class="page wide-page" hidden><div class="issue-topline">PERSONAL / SAVED</div><div class="masthead short"><div><h1>我的<span class="aqua">收藏</span></h1><p>新闻、报告与开源项目</p></div></div><div class="collection-tabs"><button data-fav-filter="all" class="selected">全部</button><button data-fav-filter="article">资讯</button><button data-fav-filter="report">报告</button><button data-fav-filter="github">开源项目</button></div><div id="favorites-list" class="entry-list"></div></section>
 <section id="page-trends" class="page wide-page" hidden><div class="issue-topline">RESEARCH / LONG-TERM</div><div class="masthead short"><div><h1><span class="aqua">趋势</span>分析</h1><p>基于实际归档的月度 · 季度 · 年度观察</p></div></div><div class="trend-switch"><button data-trend="monthly" class="selected">上一完整月度</button><button data-trend="quarterly">上一完整季度</button><button data-trend="yearly">上一完整年度</button></div><div id="trend-content" class="trend-content"></div></section>
 <section id="page-models" class="page wide-page" hidden>
- <div class="issue-topline">PRODUCT / MODEL SELECTOR</div>
- <div class="mw-portal" aria-label="Modelwise 大模型选型作品概览">
-  <div class="mw-atmosphere" aria-hidden="true"></div>
-  <div class="mw-overview">
-   <div class="mw-copy">
-    <div class="mw-kicker"><span class="mw-kicker-dot"></span>AI DAILY <span class="mw-kicker-slash">/</span> FEATURED PRODUCT</div>
-    <img class="mw-brand" src="./modelwise-logo.png" alt="Modelwise" decoding="async">
-    <h1>大模型选型工具</h1>
-    <p class="mw-subtitle">选对模型，算清成本。</p>
-    <p class="mw-description">从模型资料库到场景选型、型号对比与成本分析，帮助你找到适合当前任务的 AI 模型方案。</p>
-    <a class="mw-visit" href="https://haluwjm-lexie.github.io/Modelwise/" target="_blank" rel="noopener noreferrer" aria-label="进入 Modelwise 大模型选型工具">进入 Modelwise <span aria-hidden="true">↗</span></a>
-    <div class="mw-features" aria-label="产品功能"><span>模型资料库</span><span>场景选型</span><span>型号对比</span><span>成本与收益</span></div>
-   </div>
-   <a class="mw-showcase" href="https://haluwjm-lexie.github.io/Modelwise/" target="_blank" rel="noopener noreferrer" aria-label="查看 Modelwise 真实首页并进入网站">
-    <div class="mw-browser-bar" aria-hidden="true"><span class="mw-lights"><i></i><i></i><i></i></span><span class="mw-browser-url">haluwjm-lexie.github.io/Modelwise/</span><span class="mw-browser-arrow">↗</span></div>
-    <div class="mw-screen"><img src="./modelwise-preview.webp" alt="Modelwise 首页实景：模型资料库与 AI 产品、模型卡片" loading="eager" decoding="async"></div>
-    <span class="mw-open-hint" aria-hidden="true">查看完整产品 <span>↗</span></span>
-   </a>
+  <div class="mw4-stage" aria-label="Modelwise 大模型选型作品概览">
+    <div class="mw4-copy">
+      <div class="mw4-kicker"><span></span>AI MODEL INTELLIGENCE</div>
+      <img class="mw4-brand" src="./modelwise-logo.png" alt="Modelwise" decoding="async">
+      <h1>大模型选型</h1>
+      <p class="mw4-lead">选对模型，算清成本。</p>
+      <p class="mw4-desc">从模型资料库、场景选型、型号对比到成本与收益分析，帮助你更快找到适合当前任务的模型方案。</p>
+      <a class="mw4-cta" href="https://haluwjm-lexie.github.io/Modelwise/" target="_blank" rel="noopener noreferrer">
+        <span>进入 Modelwise</span><b aria-hidden="true">↗</b>
+      </a>
+      <div class="mw4-tags" aria-label="Modelwise 核心能力">
+        <span>模型资料库</span><span>场景选型</span><span>型号对比</span><span>成本与收益</span>
+      </div>
+    </div>
+    <a class="mw4-preview" href="https://haluwjm-lexie.github.io/Modelwise/" target="_blank" rel="noopener noreferrer" aria-label="打开 Modelwise">
+      <div class="mw4-browser">
+        <span class="mw4-dots"><i></i><i></i><i></i></span>
+        <span>Modelwise / AI 产品与模型</span>
+        <b aria-hidden="true">↗</b>
+      </div>
+      <div class="mw4-screen">
+        <img src="./modelwise-preview.webp" alt="Modelwise 模型资料库首页预览" loading="eager" decoding="async">
+      </div>
+      <div class="mw4-float-card">
+        <strong>23 个 AI 产品与模型品牌</strong>
+        <span>资料库 · 选型 · 对比 · 成本</span>
+      </div>
+    </a>
   </div>
- </div>
 </section>
 <section id="page-settings" class="page wide-page" hidden><div class="issue-topline">PERSONAL / PREFERENCES</div><div class="masthead short"><div><h1>阅读<span class="aqua">偏好</span></h1><p>定制你真正关心的 AI 方向</p></div></div><div class="settings-card"><div class="settings-head"><div><h2>我的关注主题</h2><p>选择后保存，即可筛选日报内容。</p></div><button class="action" id="save-settings">✓ 确认并应用</button></div><div class="topic-options" id="topics"></div><div id="settings-status" class="status-inline" aria-live="polite"></div></div><div class="settings-card"><div class="settings-head"><div><h2>运行与推送</h2><p>日报归档和飞书通知</p></div><button class="action secondary" id="open-runtime">打开运行仪表盘 ↗</button></div></div><div class="runtime-panel" id="runtime-panel" hidden><div class="runtime-metrics" id="runtime-metrics"></div><button class="soft-button" id="test-feishu">向飞书发送测试通知</button><div class="status-inline" id="runtime-msg"></div></div></section>
 <section id="page-changelog" class="page wide-page" hidden><div class="issue-topline">AI DAILY / CHANGELOG</div><div class="masthead short"><div><h1>更新<span class="aqua">日志</span></h1><p>持续迭代，每一次改进都有记录</p></div></div><div class="timeline"><article><time>2026.11.05 · V0.8 预上线</time><h2>刊物式阅读与公开版适配</h2><p>品牌字标、统一 A 图标、流畅滚动与一键置顶、本期完与往期切换、GitHub 五种报告命名及飞书卡片推荐理由。</p></article><article><time>2026.11.05 · V0.7</time><h2>归档保护与 GitHub 稳定性修复</h2><p>修复原始刊物 JSON 跳转；增加数据库自动备份与恢复指引；GitHub 回退到最近的真实历史快照；Star 从 GitHub API 核实状态；发布期刊标题采用真实头条。</p></article><article><time>2026.11.03 · V0.5</time><h2>往期归档和期刊信息修复</h2><p>修复多余网格占位；统一三栏与双栏阅读结构；增加 GitHub 五个观察周期、Star 入口、主题筛选、主题适配图片导出和运行仪表盘。</p></article><article><time>2026.11.03 · V0.3</time><h2>刊物阅读器</h2><p>加入日报、周报、月报、收藏和长期统计入口。</p></article><article><time>2026.11.03 · V0.2</time><h2>视觉体系更新</h2><p>引入冷白与青蓝灰深色两套主题。</p></article></div></section>
